@@ -10,6 +10,7 @@ type ASTROPORT_CONTRACTS = {
     astroContractAddress: string;
     xAstroContractAddress: string;
     astroxAstroPoolAddress: string;
+    astroLunaPoolAddress: string;
   };
 };
 
@@ -21,6 +22,8 @@ const CONTRACTS: ASTROPORT_CONTRACTS = {
       "terra1x62mjnme4y0rdnag3r8rfgjuutsqlkkyuh4ndgex0wl3wue25uksau39q8",
     astroxAstroPoolAddress:
       "terra1muhks8yr47lwe370wf65xg5dmyykrawqpkljfm39xhkwhf4r7jps0gwl4l",
+    astroLunaPoolAddress:
+      "terra13rj43lsucnel7z8hakvskr7dkfj27hd9aa06pcw4nh7t66fgt7qshrpmaw",
   },
   "pisco-1": {
     astroContractAddress:
@@ -29,6 +32,7 @@ const CONTRACTS: ASTROPORT_CONTRACTS = {
       "terra1ctzthkc0nzseppqtqlwq9mjwy9gq8ht2534rtcj3yplerm06snmqfc5ucr",
     astroxAstroPoolAddress:
       "terra19gn0pd6a7n8kgmdg8h76t70rzssf0dguvetjfkq5y78v8cr6fk3s7jfvgl",
+    astroLunaPoolAddress: "...",
   },
 };
 

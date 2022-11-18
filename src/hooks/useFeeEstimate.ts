@@ -50,6 +50,7 @@ export default function useFeeEstimate({ messages, wallet }: Props) {
           sender: message.sender,
           contract: message.contract,
           msg: toUtf8(JSON.stringify(message.msg)),
+          funds: message.funds,
         }
       };
     });
