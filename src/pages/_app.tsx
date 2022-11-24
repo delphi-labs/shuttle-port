@@ -5,6 +5,11 @@ import {
   ShuttleProvider,
   TerraStationProvider,
   KeplrProvider,
+  XDefiProvider,
+  LeapTerraProvider,
+  LeapCosmosProvider,
+  FalconProvider,
+  CosmostationProvider,
 } from "@delphi-labs/shuttle";
 
 const terraMainnetChainInfo = {
@@ -26,7 +31,7 @@ const terraTestnetChainInfo = {
   name: "Terra 2 Testnet",
   chainId: "pisco-1",
   chainPrefix: "terra",
-  rpc: "https://terra-testnet-rpc.polkachu.com/",
+  rpc: "https://terra2-delphi-testnet-1.simplystaking.xyz/ZC79CHN02DSI/terra-rpc",
   rest: "https://pisco-lcd.terra.dev/",
   defaultCurrency: {
     coinDenom: "LUNA",
@@ -47,8 +52,23 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <ShuttleProvider
         providers={[
+          new CosmostationProvider({
+            networks: [terraMainnetChainInfo, terraTestnetChainInfo],
+          }),
+          new FalconProvider({
+            networks: [terraMainnetChainInfo, terraTestnetChainInfo],
+          }),
+          new LeapTerraProvider({
+            networks: [terraMainnetChainInfo, terraTestnetChainInfo],
+          }),
+          new XDefiProvider({
+            networks: [terraMainnetChainInfo, terraTestnetChainInfo],
+          }),
           new TerraStationProvider({
-            networks: [terraMainnetChainInfo],
+            networks: [terraMainnetChainInfo, terraTestnetChainInfo],
+          }),
+          new LeapCosmosProvider({
+            networks: [terraMainnetChainInfo, terraTestnetChainInfo],
           }),
           new KeplrProvider({
             networks: [terraMainnetChainInfo, terraTestnetChainInfo],

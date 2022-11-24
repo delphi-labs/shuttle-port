@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { CosmWasmClient } from "@cosmjs/cosmwasm-stargate";
-import { WalletConnection } from "@delphi-labs/shuttle";
+import { MsgExecuteContract, WalletConnection } from "@delphi-labs/shuttle";
 
 const TOKEN_DECIMALS = 1000000;
 
@@ -81,8 +81,7 @@ export default function useSwap({ amount, offerAssetAddress, poolAddress, slippa
 
     if (offerAssetAddress.startsWith("u")) {
       return [
-        {
-          type: "/cosmwasm.wasm.v1.MsgExecuteContract",
+        new MsgExecuteContract({
           sender: wallet?.account.address || "",
           contract: poolAddress,
           msg: {
@@ -96,13 +95,12 @@ export default function useSwap({ amount, offerAssetAddress, poolAddress, slippa
             },
           },
           funds: [{ denom: offerAssetAddress, amount: String(amount * TOKEN_DECIMALS) }],
-        }
+        })
       ];
     }
     
     return [
-      {
-        type: "/cosmwasm.wasm.v1.MsgExecuteContract",
+      new MsgExecuteContract({
         sender: wallet?.account.address || "",
         contract: offerAssetAddress,
         msg: {
@@ -116,8 +114,8 @@ export default function useSwap({ amount, offerAssetAddress, poolAddress, slippa
               },
             }),
           },
-        },    
-      }
+        },
+      })
     ];
 }, [wallet, offerAssetAddress, poolAddress, amount, slippage, simulate]);
 
